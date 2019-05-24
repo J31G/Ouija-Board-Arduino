@@ -9,6 +9,8 @@ html, body {
   width: 98%;
   height: 40px;
   padding: 1%;
+  top: 0;
+  position: fixed;
 }
 .nav-button {
   float: right;
@@ -58,7 +60,7 @@ html, body {
 .wrap-home {
   display: flex;
   width: 100vw;
-  height: 110vh;
+  height: 100vh;
   justify-content: center;
   align-items: center;
 }
@@ -191,36 +193,41 @@ form {
 /* IPhone 5/SE */
 @media only screen and (min-width: 320px) and (min-height: 560px) {
   .wrap-home {
-    height: 156vh;
+    height: 172vh;
   }
-
 }
 @media only screen and (min-width: 350px) {
   .wrap-home {
     height: 140vh;
   }
-
 }
 /* Galaxy S5 */
 @media only screen and (min-width: 360px) and (min-height: 640px) {
   .wrap-home {
-    height: 130vh;
+    height: 145vh;
   }
 }
+/* IPhone 6/7/8 */
+@media only screen and (min-width: 375px) and (min-height: 650px) {
+  .wrap-home {
+    height: 140vh;
+  }
+}
+/* IPhone X */
 @media only screen and (min-width: 375px) and (min-height: 800px) {
   .wrap-home {
-    height: 105vh;
+    height: 115vh;
   }
 }
 /* Pixel 2 */
 @media only screen and (min-width: 410px) and (min-height: 730px) {
   .wrap-home {
-    height: 108vh;
+    height: 120vh;
   }
 }
 @media only screen and (min-width: 400px) and (min-height: 800px) {
   .wrap-home {
-    height: 97vh;
+    height: 107vh;
   }
 } 
 @media only screen and (min-width: 750px) {
