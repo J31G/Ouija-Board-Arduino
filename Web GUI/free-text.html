@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Free Text - Ouija Board</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+  <!-- MOB NAV -->
+  <div id="mobNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a href="index.html">Home</a>
+      <a href="free-text.html" style="color: #f1f1f1;">Free Text</a>
+      <a href="predefined.html">Predefined</a>
+      <a href="config.html">Config</a>
+      <a href="settings.html">Settings</a>
+    </div>
+  </div>
+  <!-- / MOB NAV -->
+
+  <div class="nav">
+    <span>Ouija Board</span>
+    <span class="nav-button" onclick="openNav()">&#9776;</span>
+  </div>
+
+  <div class="wrap-page">
+    <div class="ui">
+
+      <div class="title">
+        <h1>Free Text</h1>
+      </div>
+
+      <div class="word-wrap">
+
+        <div class="currentWord">Current&nbsp;word: </div>
+        <div id="word">null</div>
+
+      </div>
+
+      <form NAME="myform" ACTION="" METHOD="GET">
+        <input class="text-area" type="text" name="FreeText" placeholder="<Type in here>">
+        <input class="submit" type="button" value="Send to Board" onClick="freeText(this.form)">
+      </form>
+
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
