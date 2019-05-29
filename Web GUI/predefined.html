@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="connect()">
 
   <!-- MOB NAV -->
   <div id="mobNav" class="overlay">
@@ -40,10 +40,10 @@
       </div>
 
       <div class="buttons">
-        <a href="#">Hello World</a>
-        <a href="#">Is anyone there?</a>
-        <a href="#">I'm running out of ideas!</a>
-        <a href="#">Just fuck off now</a>
+        <a onclick="predefined('Hello World');return false;">Hello World</a>
+        <a onclick="predefined('Is anyone there?');return false;">Is anyone there?</a>
+        <a onclick="predefined('I am running out of ideas!');return false;">I am running out of ideas!</a>
+        <a onclick="predefined('Just fuck off now');return false;">Just fuck off now</a>
       </div>
 
     </div>

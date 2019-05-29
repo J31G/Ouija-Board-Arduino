@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="connect()">
 
   <!-- MOB NAV -->
   <div id="mobNav" class="overlay">
@@ -46,9 +46,9 @@
 
       </div>
 
-      <form NAME="myform" ACTION="" METHOD="GET">
-        <input class="text-area" type="text" name="FreeText" placeholder="<Type in here>">
-        <input class="submit" type="button" value="Send to Board" onClick="freeText(this.form)">
+      <form ACTION="" METHOD="GET">
+        <input id="freeTextValue" class="text-area" type="text" name="FreeText" placeholder="<Type in here>">
+        <input class="submit" type="button" value="Send to Board" onClick="freeText()">
       </form>
 
     </div>
