@@ -12,12 +12,22 @@ ESP8266WebServer server;
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 // Define pin layout
-uint8_t blueLED = D1;
-uint8_t yellowLED = D2;
+uint8_t stepPin = D0;
+uint8_t dirPin = D1;
+uint8_t blueLED = D2;
+uint8_t yellowLED = D3;
+
 
 // WiFI Details
 char* ssid = "YE Staff";
 char* pass = "3nt3rpr!5E";
+
+// Stepper bits
+uint8_t stepsPerRev = 200;
+uint8_t stepsRequired = 5;
+uint8_t stepsTotal = stepsPerRev * stepsRequired;
+bool startStepper = false;
+uint8_t stepDir = LOW;
 
 // Simple Web page to control things
 char webpage[] PROGMEM = R"=====(
@@ -37,8 +47,12 @@ void setup() {
   // Set LED's to output and make sure they are off
   pinMode ( blueLED, OUTPUT );
   pinMode ( yellowLED, OUTPUT );
-  digitalWrite ( blueLED, OUTPUT );
-  digitalWrite ( yellowLED, OUTPUT );
+  digitalWrite ( blueLED, LOW );
+  digitalWrite ( yellowLED, LOW );
+
+  // Stepper pins
+  pinMode ( stepPin, OUTPUT );
+  pinMode ( dirPin, OUTPUT );
 
   // WiFi & Console setup
   WiFi.begin ( ssid, pass );
@@ -81,6 +95,21 @@ void loop() {
     char c [] = { ( char ) Serial.read () };
     webSocket.broadcastTXT ( c, sizeof (c) );
   }
+
+  if ( startStepper == true ) {
+
+    digitalWrite ( dirPin, stepDir );
+
+    //for ( int x = 0; x < stepsTotal; x++ ) {
+
+      digitalWrite ( stepPin, HIGH );
+      delayMicroseconds ( 500 );
+      digitalWrite ( stepPin, LOW );
+      delayMicroseconds ( 500 );
+      
+    // }
+    
+  }
   
 }
 
@@ -97,7 +126,7 @@ void webSocketEvent ( uint8_t num, WStype_t type, uint8_t * payload, size_t leng
       Serial.print ( "Brightness = " );
       Serial.println ( brightness );
       
-    } 
+    }
 
     // FreeText page: Random words
     else if ( payload [0] == '!' ) {
@@ -120,6 +149,30 @@ void webSocketEvent ( uint8_t num, WStype_t type, uint8_t * payload, size_t leng
       Serial.println ();
         
     }
+
+    // Stepper on / Off
+    else if ( payload [0] == '/' ) {
+
+      if ( payload [1] == 'c' ) {
+        stepDir = HIGH;
+        Serial.println ( "Stepper = Clockwise" );
+      } 
+      else if ( payload [1] == 'a' ) {
+        stepDir = LOW;
+        Serial.println ( "Stepper = Anti-Clockwise" );
+      }
+      
+      if ( payload [1] == 'y' ) {
+        startStepper = true;
+        Serial.println ( "Stepper = On" );
+      } 
+      else if ( payload [1] == 'n' ) {
+        startStepper = false;
+        Serial.println ( "Stepper = Off" );
+      }
+      
+    }
+    
     // Unknown - Print
     else {
 
@@ -132,5 +185,8 @@ void webSocketEvent ( uint8_t num, WStype_t type, uint8_t * payload, size_t leng
     }
     
   }
+  
+}
+void letterLookup () {
   
 }

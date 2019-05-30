@@ -40,8 +40,8 @@
       </div>
 
       <div class="buttons">
-        <a href="#">Send to 0,0</a>
-        <a href="#">Send to Ponce Position</a>
+        <a onclick="setMotor('y');return false;">Send to 0,0 (TEMP: On)</a>
+        <a onclick="setMotor('n');return false;">Send to Ponce Position (TEMP: Off)</a>
 
         <p>Set Delay: <span id="delay"></span></p>
         <input type="range" min="0" max="1023" value="512" class="slider" id="myDelay" oninput="displayDelay()">

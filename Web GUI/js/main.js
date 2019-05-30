@@ -33,6 +33,18 @@ function predefined (word) {
   Socket.send( "*" + word );
 }
 
+/* Motor On / Off */
+var motorSet = "";
+function setMotor (motorSet) {
+  Socket.send( "/" + motorSet );
+}
+
+/* Motor CW / ACW */
+var motorDir = "";
+function setDir (motorDir) {
+  Socket.send( "/" + motorDir );
+}
+
 /* LED Slider */
 function setDelay () {
   var delay = document.getElementById("myDelay").value;

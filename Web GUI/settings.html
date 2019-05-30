@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="connect()">
 
   <!-- MOB NAV -->
   <div id="mobNav" class="overlay">
@@ -38,6 +38,20 @@
       <div class="title">
         <h1>Settings</h1>
       </div>
+
+      <div class="buttons">
+
+        <a onclick="setMotor('y');return false;">On</a>
+        <a onclick="setMotor('n');return false;">Off</a>
+
+      </div>
+
+      <div class="buttons">
+
+          <a onclick="setDir('c');return false;">Clockwise</a>
+          <a onclick="setDir('a');return false;">Anti-clockwise</a>
+  
+        </div>
 
     </div>
   </div>
