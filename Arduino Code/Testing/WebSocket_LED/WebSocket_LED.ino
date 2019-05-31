@@ -132,18 +132,6 @@ void webSocketEvent ( uint8_t num, WStype_t type, uint8_t * payload, size_t leng
       
     }
 
-    // FreeText page: Random words
-    else if ( payload [0] == '!' ) {
-
-      Serial.print ( "Free Word = " );
-      for ( int i = 1; i < length; i++ ) {
-        Serial.print ( ( char ) payload [i] );
-        
-      }
-    Serial.println ();
-        
-    }
-
     // Diaply Word in console
     else if ( payload [0] == '*' ) {
 
@@ -205,6 +193,25 @@ void webSocketEvent ( uint8_t num, WStype_t type, uint8_t * payload, size_t leng
   }
   
 }
-void letterLookup () {
-  
+void setLetters (stepX, stepY) {
+
+  bool runningX = false;
+  bool runningY = false;
+
+  if ( runningX = false || runningY = false ) {
+
+    runningX = true;
+    runningY = true;
+
+    while ( runningX = true || runningY = true ) {
+
+      
+      
+    }
+
+    runningX = false;
+    runningY = false;
+    
+  }
+
 }

@@ -7,12 +7,12 @@ function connect() {
   Socket = new WebSocket('ws://172.16.0.23:81/');
 }
 
-/* Open */
+/* Nav: Open */
 function openNav() {
   document.getElementById("mobNav").style.height = "100%";
 }
 
-/* Close */
+/* NAV: Close */
 function closeNav() {
   document.getElementById("mobNav").style.height = "0%";
 }
@@ -26,7 +26,8 @@ function freeText() {
     alert ("Please enter something in the box");
   } else {
     document.getElementById("word").innerHTML = freeText;
-    Socket.send( "!" + freeText );
+    // Socket.send( "!" + freeText );
+    sendLetter (freeText);
   }
 }
 /* Send letter */
