@@ -22,6 +22,10 @@ uint8_t yellowLED = D3;
 char* ssid = "YE Staff";
 char* pass = "3nt3rpr!5E";
 
+// Word related bits
+uint8_t stepX;
+uint8_t stepY;
+
 // Stepper bits
 uint8_t stepsPerRev = 200;
 uint8_t stepsRequired = 5;
@@ -29,7 +33,7 @@ uint8_t stepsTotal = stepsPerRev * stepsRequired;
 bool startStepper = false;
 uint8_t stepDir = LOW;
 
-// Simple Web page to control things
+// Simple Web page to show connection
 char webpage[] PROGMEM = R"=====(
 <html>
 <head>
@@ -134,20 +138,34 @@ void webSocketEvent ( uint8_t num, WStype_t type, uint8_t * payload, size_t leng
       Serial.print ( "Free Word = " );
       for ( int i = 1; i < length; i++ ) {
         Serial.print ( ( char ) payload [i] );
+        
       }
     Serial.println ();
         
     }
 
-    // Pre-Definded words
+    // Diaply Word in console
     else if ( payload [0] == '*' ) {
 
-      Serial.print ( "Predefined = " );
+      Serial.print ( "Our Word = " );
       for ( int i = 1; i < length; i++ ) {
         Serial.print ( ( char ) payload [i] );
       }
       Serial.println ();
-        
+    }
+    else if ( payload [0] == '+' ) {
+
+      if ( payload [1] == 'X' ) {
+        stepX = ( uint16_t ) strtol ( ( const char * ) & payload [2], NULL, 10 );
+        Serial.print ( "X = " );
+        Serial.println ( stepX );
+      } 
+      if ( payload [1] == 'Y' ) {
+        stepY = ( uint16_t ) strtol ( ( const char * ) & payload [2], NULL, 10 );
+        Serial.print ( "Y = " );
+        Serial.println ( stepY );
+      }
+
     }
 
     // Stepper on / Off
