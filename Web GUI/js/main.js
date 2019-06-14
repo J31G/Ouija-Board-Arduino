@@ -40,7 +40,7 @@ function sendLetter (word) {
   var letters = word.split("");
 
   // For each letter, do the following:
-  for ( i = 0; i < letters.length; i++) {
+  for ( i = 0; i < letters.length; i++ ) {
 
     // Make sure the letters are lower case
     var letter = letters[i].toLowerCase();
